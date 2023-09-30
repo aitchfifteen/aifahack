@@ -1,1 +1,2 @@
-Ammar Akif did all the work!
+
+Made by Quy Dan Nguyen Phuoc, Ammar Akif, Riley McKinney, Aariz Habib.
