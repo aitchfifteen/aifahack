@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('background.avif');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Salary Calculator</h2>
+
+  Hourly Wage: <input placeholder="$" type="number" id="wage" min="0" step="0.01"><br><br>
+
+  <table>
+    <tr>
+      <td>Monday:</td>
+      <td><input placeholder="hrs" type="number" id="mon" min="0" max="24"></td>
+    </tr>
+    <tr>
+      <td>Tuesday:</td>
+      <td><input placeholder="hrs" type="number" id="tue" min="0" max="24"></td>
+    </tr>
+    <tr>
+      <td>Wednesday:</td>
+      <td><input placeholder="hrs" type="number" id="wed" min="0" max="24"></td>
+    </tr>
+    <tr>
+      <td>Thursday:</td>
+      <td><input placeholder="hrs" type="number" id="thu" min="0" max="24"></td>
+    </tr>
+    <tr>
+      <td>Friday:</td>
+      <td><input placeholder="hrs" type="number" id="fri" min="0" max="24"></td>
+    </tr>
+    <tr>
+      <td>Saturday:</td>
+      <td><input placeholder="hrs" type="number" id="sat" min="0" max="24"></td>
+    </tr>
+    <tr>
+      <td>Sunday:</td>
+      <td><input placeholder="hrs" type="number" id="sun" min="0" max="24"></td>
+    </tr>
+  </table>
+
+  <!--<button onclick="calculateSalary()">Calculate Weekly Salary</button> -->
+  <button onclick="displaySalaries()">Calculate Salaries</button>
+
+
+  <p>Total Salary: $<span id="totalSalary">0</span></p>
+  <p>Potential Yearly Salary: $<span id="yearlySalary">0</span></p>
+
+  <a href="comparisonResult.html" class="btn">Continue to Comparison</a>
+
+  <!-- Optional CSS to make the link look like a button -->
+  <style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #45a049;
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

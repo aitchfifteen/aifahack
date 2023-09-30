@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Salary Comparison</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      background-image: url('background.avif');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Salary Comparison</h1>
+
+  <label for="jobSelect">Select a Job:</label>
+  <select id="jobSelect">
+    <option value="softwareDeveloper">Software Developer</option>
+    <option value="dataScientist">Data Scientist</option>
+    <option value="networkAdministrator">Network Administrator</option>
+    <option value="cybersecurityAnalyst">Cybersecurity Analyst</option>
+    <option value="databaseAdministrator">Database Administrator</option>
+  </select>
+
+
+  <button onclick="compareSalary()">Compare</button>
+
+  <p>Your Calculated Yearly Salary: $<span id="displayedYearlySalary">0</span></p>
+  <p id="comparisonResult"></p>
+  <a href="index.html" class="btn">Return to Menu</a>
+
+  <script>
+    const jobSalaries = {
+      softwareDeveloper: 125000,
+      dataScientist: 95000,
+      networkAdministrator: 85000,
+      cybersecurityAnalyst: 120000,
+      databaseAdministrator: 85000
+    };
+
+    // Retrieve the yearlySalary from localStorage and set it to the input field
+    const yearlySalary = localStorage.getItem('yearlySalary');
+    const userSalaryInput = document.getElementById('displayedYearlySalary');
+    const displayedYearlySalary = document.getElementById('displayedYearlySalary');
+
+    if (yearlySalary) {
+      userSalaryInput.value = yearlySalary;
+      displayedYearlySalary.textContent = parseFloat(yearlySalary).toLocaleString();
+    }
+
+    function compareSalary() {
+      const jobSelect = document.getElementById('jobSelect');
+      const comparisonResult = document.getElementById('comparisonResult');
+
+      const selectedJob = jobSelect.value;
+      const userSalary = parseFloat(userSalaryInput.value);
+
+      if (isNaN(userSalary)) {
+        comparisonResult.textContent = 'Please enter a valid salary.';
+        return;
+      }
+
+      if (selectedJob in jobSalaries) {
+        const jobSalary = jobSalaries[selectedJob];
+        const difference = userSalary - jobSalary;
+
+        if (difference > 0) {
+          comparisonResult.textContent = `Your salary is ${difference.toLocaleString()} dollars higher than a typical ${selectedJob.replace(/([A-Z])/g, ' $1').trim()}.`;
+        } else if (difference < 0) {
+          comparisonResult.textContent = `Your salary is ${Math.abs(difference).toLocaleString()} dollars lower than a typical ${selectedJob.replace(/([A-Z])/g, ' $1').trim()}.`;
+        } else {
+          comparisonResult.textContent = `Your salary matches that of a typical ${selectedJob.replace(/([A-Z])/g, ' $1').trim()}.`;
+        }
+      } else {
+        comparisonResult.textContent = 'Please select a job from the dropdown.';
+      }
+    }
+  </script>
+</body>
+<style>
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #45a049;
+  }
+</style>
+
+</html>
